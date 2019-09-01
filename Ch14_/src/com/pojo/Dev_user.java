@@ -2,39 +2,52 @@ package com.pojo;
 
 import java.util.Date;
 
-public class backend_user {
+public class Dev_user {
 	private Integer id;			//id编号
-	private String userCode;	//用户编码
-	private String userName;	//用户名称
-	private Integer userType;	//用户角色类型（来源于数据字典表，分为：超管、财务、市场、运营、销售）
+	private String devCode;		//开发者帐号
+	private String devName;		//开发者名称
+	private String devPassword;	//开发者密码
+	private String devEmail;	//开发者电子邮箱
+	private String devInfo;		//开发者简介
 	private Integer createdBy;	//创建者（来源于backend_user用户表的用户id）
 	private Date creationDate;	//创建时间
 	private Integer modifyBy;	//更新者（来源于backend_user用户表的用户id）
 	private Date modifyDate;	//最新更新时间
-	private String userPassword;//用户密码
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getUserCode() {
-		return userCode;
+	public String getDevCode() {
+		return devCode;
 	}
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
+	public void setDevCode(String devCode) {
+		this.devCode = devCode;
 	}
-	public String getUserName() {
-		return userName;
+	public String getDevName() {
+		return devName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setDevName(String devName) {
+		this.devName = devName;
 	}
-	public Integer getUserType() {
-		return userType;
+	public String getDevPassword() {
+		return devPassword;
 	}
-	public void setUserType(Integer userType) {
-		this.userType = userType;
+	public void setDevPassword(String devPassword) {
+		this.devPassword = devPassword;
+	}
+	public String getDevEmail() {
+		return devEmail;
+	}
+	public void setDevEmail(String devEmail) {
+		this.devEmail = devEmail;
+	}
+	public String getDevInfo() {
+		return devInfo;
+	}
+	public void setDevInfo(String devInfo) {
+		this.devInfo = devInfo;
 	}
 	public Integer getCreatedBy() {
 		return createdBy;
@@ -59,12 +72,6 @@ public class backend_user {
 	}
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
-	}
-	public String getUserPassword() {
-		return userPassword;
-	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
 	}
 
 }

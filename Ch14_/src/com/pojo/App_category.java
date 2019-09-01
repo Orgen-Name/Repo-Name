@@ -2,7 +2,7 @@ package com.pojo;
 
 import java.util.Date;
 
-public class app_category {
+public class App_category {
 	private Integer id;				//id编号
 	private String categoryCode;	//分类编码
 	private String categoryName;	//分类名称

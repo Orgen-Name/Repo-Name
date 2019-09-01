@@ -2,7 +2,7 @@ package com.pojo;
 
 import java.util.Date;
 
-public class ad_promotion {
+public class Ad_promotion {
 	private Integer id;					//id±àºÅ
 	private Integer appId;				//appId±àºÅ
 	private String adPicPath;			//¹ã¸æÍ¼Æ¬´æ´¢Â·¾¶ 

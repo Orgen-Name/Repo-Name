@@ -3,7 +3,7 @@ package com.pojo;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class app_info {
+public class App_info {
 	private Integer id;					//id±àºÅ
 	private String softwareName;		//Integer
 	private String APKName;				//APKÃû³Æ£¨Î¨Ò»£©
