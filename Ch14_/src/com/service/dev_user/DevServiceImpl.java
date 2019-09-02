@@ -1,4 +1,4 @@
-package com.service;
+package com.service.dev_user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,8 @@ public class DevServiceImpl implements DevService {
 	public Dev_user getLogin(String devCode, String devPassword) {
 		return devMapper.getLogin(devCode, devPassword);
 	}
-
+	
+	
 	@Override
 	public String findCode(String code) {
 		return devMapper.findCode(code);

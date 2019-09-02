@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pojo.Dev_user;
-import com.service.DevService;
+import com.service.dev_user.DevService;
 
 @Controller
 @RequestMapping("/dev")

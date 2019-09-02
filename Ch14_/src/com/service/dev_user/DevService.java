@@ -1,4 +1,4 @@
-package com.service;
+package com.service.dev_user;
 
 import com.pojo.Dev_user;
 

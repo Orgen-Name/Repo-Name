@@ -1,9 +1,10 @@
-package com.dao.appinfo;
-
+package com.service.appinfo;
 
 import com.pojo.App_info;
+import com.pojo.Dev_user;
 
-public interface App_infoMapper {
+public interface App_infoService {
+	
 	/**
 	 * 分页查询全部
 	 * @param softwareName
@@ -19,4 +20,5 @@ public interface App_infoMapper {
 							Integer categoryLevel1,Integer categoryLevel2,
 							Integer categoryLevel3,Integer flatformId,
 							Integer devId,Integer from,Integer pageSize);
+
 }

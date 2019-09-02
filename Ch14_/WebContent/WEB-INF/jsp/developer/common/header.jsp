@@ -81,7 +81,8 @@
 										class="fa fa-chevron-down"></span>
 								</a>
 									<ul class="nav child_menu">
-										<li><a href="${pageContext.request.contextPath }/dev/flatform/app/list">APP维护</a>
+										<li>
+											<a href="${pageContext.request.contextPath }/devAppinfo/list">APP维护</a>
 										</li>
 									</ul></li>
 							</ul>
@@ -114,8 +115,8 @@
 						<div class="nav toggle">
 							<a id="menu_toggle"><i class="fa fa-bars"></i>
 							</a>
-						</div>
-
+						</div>00
+0
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
