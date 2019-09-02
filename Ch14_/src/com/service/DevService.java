@@ -9,6 +9,13 @@ public interface DevService {
 	 * @param devpassword
 	 * @return
 	 */
-	public Dev_user getLogin(String devCode,String devpassword);
+	public Dev_user getLogin(String devCode,String devPassword);
+	
+	/**
+	 * 查找用户名
+	 * @param code
+	 * @return
+	 */
+	public String findCode(String code); // 查找用户名
 
 }
