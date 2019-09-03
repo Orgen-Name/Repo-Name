@@ -12,12 +12,18 @@ public class App_info {
 	private BigDecimal softwareSize;	//软件大小（单位：M）
 	private Date updateDate;			//更新日期
 	private Integer devId;				//开发者id（来源于：dev_user表的开发者id）
+	private String devName;
 	private String appInfo;				//应用简介
 	private Integer status;				//状态（来源于：data_dictionary，1 待审核 2 审核通过 3 审核不通过 4 已上架 5 已下架）
+	private String statusName;
 	private Date onSaleDate;			//上架时间
 	private Date offSaleDate;			//下架时间
 	private Integer flatformId;			//所属平台（来源于：data_dictionary，1 手机 2 平板 3 通用）
+	private String flatformName;
 	private Integer categoryLevel3;		//所属三级分类（来源于：data_dictionary）
+	private String categoryLevel1Name;
+	private String categoryLevel2Name;
+	private String categoryLevel3Name;
 	private Integer downloads;			//下载量（单位：次）
 	private Integer createdBy;			//创建者（来源于dev_user开发者信息表的用户id）
 	private Date creationDate;			//创建时间
@@ -28,6 +34,49 @@ public class App_info {
 	private String logoPicPath;			//LOGO图片url路径
 	private String logoLocPath;			//LOGO图片的服务器存储路径
 	private Integer versionId;			//最新的版本id
+	private String versionNo;			//最新的版本信息
+	public String getDevName() {
+		return devName;
+	}
+	public void setDevName(String devName) {
+		this.devName = devName;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+	public String getFlatformName() {
+		return flatformName;
+	}
+	public void setFlatformName(String flatformName) {
+		this.flatformName = flatformName;
+	}
+	public String getCategoryLevel1Name() {
+		return categoryLevel1Name;
+	}
+	public void setCategoryLevel1Name(String categoryLevel1Name) {
+		this.categoryLevel1Name = categoryLevel1Name;
+	}
+	public String getCategoryLevel2Name() {
+		return categoryLevel2Name;
+	}
+	public void setCategoryLevel2Name(String categoryLevel2Name) {
+		this.categoryLevel2Name = categoryLevel2Name;
+	}
+	public String getCategoryLevel3Name() {
+		return categoryLevel3Name;
+	}
+	public void setCategoryLevel3Name(String categoryLevel3Name) {
+		this.categoryLevel3Name = categoryLevel3Name;
+	}
+	public String getVersionNo() {
+		return versionNo;
+	}
+	public void setVersionNo(String versionNo) {
+		this.versionNo = versionNo;
+	}
 	public Integer getId() {
 		return id;
 	}

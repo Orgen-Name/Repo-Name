@@ -41,10 +41,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="flatformId != null">
 				and a.flatformId = #{flatformId}
 			</if>
-			<if test="devId != null">
+<!-- 			<if test="devId != null">
 				and a.devId = #{devId}
-			</if>
+			</if> -->
 		</trim>
 		order by creationDate DESC limit #{from},#{pageSize}
+	</select>
+	
+	<select id="app_infoCount" resultType="int">
+		SELECT COUNT(*) FROM app_info
+	</select>
+	
+	<select id="getAPP_STATUS" resultType="Data_dictionary">
+		SELECT * FROM data_dictionary WHERE  typeCode = "APP_STATUS"
+	</select>
+	
+	<select id="getAPP_FLATFORM" resultType="Data_dictionary">
+		SELECT * FROM data_dictionary WHERE  typeCode = "APP_FLATFORM"
+
 	</select>
 </mapper>

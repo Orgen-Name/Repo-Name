@@ -30,4 +30,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				(select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
 			from  app_info a
 	</select>
+	
+	
 </mapper>
