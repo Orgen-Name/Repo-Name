@@ -10,8 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
+import com.pojo.App_category;
 import com.pojo.App_info;
 import com.pojo.Data_dictionary;
 import com.pojo.Dev_user;
@@ -69,16 +73,33 @@ public class AppinfoController {
 		
 		model.addAttribute("appInfoList", appinfolist);
 
-		List<Data_dictionary> flatformlist = appinfoService.getAPP_FLATFORM();
+		/*List<Data_dictionary> flatformlist = appinfoService.getAPP_FLATFORM();
 		
 		List<Data_dictionary> statuslist = appinfoService.getAPP_STATUS();
 		// 把值一个一个的传给页面
 		model.addAttribute("queryStatus",statuslist );
-		model.addAttribute("queryFlatformId", flatformlist);
+		model.addAttribute("queryFlatformId", flatformlist);*/
 		model.addAttribute("pages", page);
 
 		logger.debug("已经到了要跳转的时候了。！。。。。");
 		return "/developer/appinfolist";
+	}
+	
+	@RequestMapping(value="/categorylevellist",method = RequestMethod.GET)
+	@ResponseBody
+	public Object Categorylevellist(Integer uid){
+		if(uid.equals("")){
+			List<App_category> category = appinfoService.getCotegeryLevel1();
+			return JSONArray.toJSONString(category);
+		}else if(uid == 1 || uid == 2){
+			List<App_category> category1 = appinfoService.getCotegeryLevel2(uid);
+			return JSONArray.toJSONString(category1);
+		}else{
+			List<App_category> category2 = appinfoService.getCotegeryLevel3();
+			return JSONArray.toJSONString(category2);
+		}
+		
+		
 	}
 	
 }

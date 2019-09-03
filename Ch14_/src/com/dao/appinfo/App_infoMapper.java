@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.pojo.App_category;
 import com.pojo.App_info;
 import com.pojo.Data_dictionary;
 
@@ -41,4 +42,17 @@ public interface App_infoMapper {
 	 * 加载所属平台
 	 */
 	public List<Data_dictionary> getAPP_FLATFORM() ;
+	
+	/**
+	 * 加载一级菜单
+	 */
+	public List<App_category> getCotegeryLevel1();
+	/**
+	 * 加载二级菜单
+	 */
+	public List<App_category> getCotegeryLevel2(Integer uid);
+	/**
+	 * 加载三级菜单
+	 */
+	public List<App_category> getCotegeryLevel3();
 }

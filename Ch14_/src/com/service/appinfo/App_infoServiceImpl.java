@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dao.appinfo.App_infoMapper;
 import com.dao.dev_user.DevMapper;
+import com.pojo.App_category;
 import com.pojo.App_info;
 import com.pojo.Data_dictionary;
 import com.pojo.Dev_user;
@@ -36,6 +37,21 @@ public class App_infoServiceImpl implements App_infoService {
 	@Override
 	public List<Data_dictionary> getAPP_FLATFORM() {
 		return app_infoMapper.getAPP_FLATFORM();
+	}
+
+	@Override
+	public List<App_category> getCotegeryLevel1() {
+		return app_infoMapper.getCotegeryLevel1();
+	}
+
+	@Override
+	public List<App_category> getCotegeryLevel2(Integer uid) {
+		return app_infoMapper.getCotegeryLevel2(uid);
+	}
+
+	@Override
+	public List<App_category> getCotegeryLevel3() {
+		return  app_infoMapper.getCotegeryLevel3();
 	}
 
 	

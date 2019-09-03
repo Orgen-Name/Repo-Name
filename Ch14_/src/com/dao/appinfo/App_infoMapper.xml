@@ -58,6 +58,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getAPP_FLATFORM" resultType="Data_dictionary">
 		SELECT * FROM data_dictionary WHERE  typeCode = "APP_FLATFORM"
-
+	</select>
+	
+	<select id="getCotegeryLevel1" resultType="App_category">
+		select * from app_category  WHERE parentId is null
+	</select>
+	
+	<select id="getCotegeryLevel2" resultType="App_category">
+		SELECT * from app_category WHERE parentId = #{uid} 
+	</select>
+	
+	<select id="getCotegeryLevel3" resultType="App_category">
+		SELECT * FROM app_category WHERE parentId != 1 and parentId !=2
 	</select>
 </mapper>
