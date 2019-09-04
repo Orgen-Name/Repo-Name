@@ -30,29 +30,45 @@ public class App_infoServiceImpl implements App_infoService {
 	}
 
 	@Override
-	public List<Data_dictionary> getAPP_STATUS() {
-		return app_infoMapper.getAPP_STATUS();
+	public List<Data_dictionary> getAPP_STATUS(Integer status) {
+		return app_infoMapper.getAPP_STATUS(status);
 	}
 
 	@Override
 	public List<Data_dictionary> getAPP_FLATFORM() {
 		return app_infoMapper.getAPP_FLATFORM();
 	}
-
+	
 	@Override
-	public List<App_category> getCotegeryLevel1() {
-		return app_infoMapper.getCotegeryLevel1();
+	public List<App_category> getCotegeryLevel(Integer parentId) {
+		return app_infoMapper.getCotegeryLevel(parentId);
 	}
 
 	@Override
-	public List<App_category> getCotegeryLevel2(Integer uid) {
-		return app_infoMapper.getCotegeryLevel2(uid);
+	public int App_infoAdd(App_info app_info) {
+		return app_infoMapper.App_infoAdd(app_info);
 	}
 
 	@Override
-	public List<App_category> getCotegeryLevel3() {
-		return  app_infoMapper.getCotegeryLevel3();
+	public int ExistAPK(String APKName) {
+		return app_infoMapper.ExistAPK(APKName);
 	}
 
+	@Override
+	public App_info getApp_infoID(Integer id) {
+		return app_infoMapper.getApp_infoID(id);
+	}
+
+	@Override
+	public int getDeleFile(Integer id) {
+		return app_infoMapper.getDeleFile(id);
+	}
+
+	@Override
+	public int App_infomodify(App_info appinfo) {
+		return app_infoMapper.App_infomodify(appinfo);
+	}
+	
+	
 	
 }

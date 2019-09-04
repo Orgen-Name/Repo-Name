@@ -20,7 +20,6 @@ public class DevController {
 	@Autowired
 	public DevService devService;
 	
-	
 	/**
 	 * 进入前台用户登录
 	 * @return

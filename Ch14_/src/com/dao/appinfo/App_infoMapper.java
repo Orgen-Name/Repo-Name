@@ -4,6 +4,7 @@ package com.dao.appinfo;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pojo.App_category;
 import com.pojo.App_info;
@@ -36,7 +37,7 @@ public interface App_infoMapper {
 	 * 加载APP状态
 	 * @return
 	 */
-	public List<Data_dictionary> getAPP_STATUS() ;
+	public List<Data_dictionary> getAPP_STATUS(@Param("valueId")Integer status) ;
 	
 	/**
 	 * 加载所属平台
@@ -44,15 +45,40 @@ public interface App_infoMapper {
 	public List<Data_dictionary> getAPP_FLATFORM() ;
 	
 	/**
-	 * 加载一级菜单
+	 * 加载菜单
 	 */
-	public List<App_category> getCotegeryLevel1();
+	public List<App_category> getCotegeryLevel(@Param("parentId")Integer parentId);
+	
+	
 	/**
-	 * 加载二级菜单
+	 * 添加应用信息
+	 * @return
 	 */
-	public List<App_category> getCotegeryLevel2(Integer uid);
+	public int App_infoAdd(App_info app_info);
+	
 	/**
-	 * 加载三级菜单
+	 * 验证APK是否重复
 	 */
-	public List<App_category> getCotegeryLevel3();
+	public int ExistAPK(String APKName);
+	
+	/**
+	 * 依据ID查询基本信息并跳转到修改页面
+	 */
+	public App_info getApp_infoID(@Param("id")Integer id);
+	/**
+	 * 获取APP状态
+	 * @param valueId
+	 * @return
+	 */
+	public String getData_dictionary(@Param("valueId")Integer valueId);
+	
+	/**
+	 * 删除图片路径
+	 */
+	public int getDeleFile(@Param("id")Integer id);
+	
+	/**
+	 * 修改info
+	 */
+	public int App_infomodify(App_info appinfo);
 }
