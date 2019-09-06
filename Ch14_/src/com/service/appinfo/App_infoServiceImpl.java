@@ -11,6 +11,7 @@ import com.pojo.App_category;
 import com.pojo.App_info;
 import com.pojo.Data_dictionary;
 import com.pojo.Dev_user;
+import com.pojo.App_vorsion;
 
 @Service("App_infoService")
 public class App_infoServiceImpl implements App_infoService {
@@ -58,15 +59,59 @@ public class App_infoServiceImpl implements App_infoService {
 	public App_info getApp_infoID(Integer id) {
 		return app_infoMapper.getApp_infoID(id);
 	}
-
-	@Override
-	public int getDeleFile(Integer id) {
-		return app_infoMapper.getDeleFile(id);
-	}
-
 	@Override
 	public int App_infomodify(App_info appinfo) {
 		return app_infoMapper.App_infomodify(appinfo);
+	}
+
+	@Override
+	public App_info getAppinfoID(Integer id) {
+		return app_infoMapper.getAppinfoID(id);
+	}
+
+	@Override
+	public int getAppinfoDeleteID(Integer id) {
+		return app_infoMapper.getAppinfoDeleteID(id);
+	}
+
+	@Override
+	public List<App_vorsion> getVersion(Integer appId) {
+		return app_infoMapper.getVersion(appId);
+	}
+
+	@Override
+	public App_vorsion getModifyID(Integer id) {
+		return app_infoMapper.getModifyID(id);
+	}
+
+	@Override
+	public int deleteVersionByAppId(Integer appId){
+		return app_infoMapper.deleteVersionByAppId(appId);
+	}
+
+	@Override
+	public App_vorsion getAppVersionById(Integer id){
+		return app_infoMapper.getAppVersionById(id);
+	}
+
+	@Override
+	public int modify(App_vorsion appVersion){
+		return app_infoMapper.modify(appVersion);
+	}
+
+	@Override
+	public int deleteApkFile(Integer id){
+		return app_infoMapper.deleteApkFile(id);
+	}
+
+	@Override
+	public int deleteAppLogo(Integer id) {
+		return app_infoMapper.deleteAppLogo(id);
+	}
+
+	@Override
+	public App_info getAppInfo(Integer id, String APKName) throws Exception {
+		return app_infoMapper.getAppInfo(id, APKName);
 	}
 	
 	

@@ -9,6 +9,7 @@ import com.pojo.App_category;
 import com.pojo.App_info;
 import com.pojo.Data_dictionary;
 import com.pojo.Dev_user;
+import com.pojo.App_vorsion;
 
 public interface App_infoService {
 	
@@ -65,12 +66,43 @@ public interface App_infoService {
 	 */
 	public App_info getApp_infoID(@Param("id")Integer id);
 	
-	/**
-	 * 删除图片路径
-	 */
-	public int getDeleFile(@Param("id")Integer id);
+	
 	/**
 	 * 修改info
 	 */
 	public int App_infomodify(App_info appinfo);
+	
+	/**
+	 * 根据ID查看应用信息
+	 */
+	public App_info getAppinfoID(@Param("id")Integer id);
+	
+	/**
+	 * 根据ID删除应用信息
+	 */
+	public int getAppinfoDeleteID(@Param("id")Integer id);
+	/**
+	 * 查询最新版本号
+	 */
+	public List<App_vorsion> getVersion(Integer appId);
+	/**
+	 * 修改前加载该版本信息
+	 */
+	public App_vorsion getModifyID(Integer id);
+	
+	public int deleteVersionByAppId(Integer appId);
+	
+	public App_vorsion getAppVersionById(Integer id);
+	
+	public int modify(App_vorsion appVersion);
+	/**
+	 * 删除资源下载路径
+	 */
+	public int deleteApkFile(Integer id);
+	
+	public App_info getAppInfo(Integer id,String APKName) throws Exception;
+	/**
+	 * 删除图片路径
+	 */
+	public int deleteAppLogo(Integer id);
 }

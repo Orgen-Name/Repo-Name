@@ -93,8 +93,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from app_info where id = #{id}
 	</select>
 	
-	<select id="getDeleFile" resultType="Integer">
-		UPDATE app_info SET logoPicPath = ''  WHERE id=#{id}
+	<select id="getAppInfo" resultType="App_info">
+		select * ,
+			(select devName from dev_user where id = a.devId) as devName,
+			(select valueName from data_dictionary d where  a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
+			(select valueName from data_dictionary d where  a.status=d.valueId AND d.typeCode='APP_FLATFORM') as flatformName,
+			(select categoryName from app_category c where  c.id=a.categoryLevel1) as categoryLevel1Name,
+			(select categoryName from app_category c where  c.id=a.categoryLevel2) as categoryLevel2Name,
+			(select categoryName from app_category c where  c.id=a.categoryLevel3) as categoryLevel3Name,
+			(select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
+		  from app_info a
+		  <trim prefix="where" prefixOverrides="and | or">
+				<if test="id != null">
+					and a.id = #{id}
+				</if>
+				<if test="APKName != null">
+					and a.APKName = #{APKName}
+				</if>
+		  </trim>
 	</select>
 	
 	<update id="App_infomodify" parameterType="App_info">
@@ -120,5 +136,98 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="modifyBy != null">modifyBy=#{modifyBy},</if>
 			<if test="modifyDate != null">modifyDate=#{modifyDate},</if>
 		</trim>
+	</update>
+	
+	<select id="getAppinfoID" resultType="App_info">
+			select a.id, a.softwareName,a.APKName,a.supportROM,a.softwareSize,a.devId,a.interfaceLanguage,a.appInfo,
+				(select devName from dev_user where id = a.devId) as devName,
+				a.status,
+				(select valueName from data_dictionary d where  a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
+				a.flatformId,
+				(select valueName from data_dictionary d where  a.flatformId=d.valueId AND d.typeCode='APP_FLATFORM') as flatformName,
+				a.categoryLevel1,
+				(select categoryName from app_category c where  c.id=a.categoryLevel1) as categoryLevel1Name,
+				a.categoryLevel2,
+				(select categoryName from app_category c where  c.id=a.categoryLevel2) as categoryLevel2Name,
+				a.categoryLevel3,
+				(select categoryName from app_category c where  c.id=a.categoryLevel3) as categoryLevel3Name,
+				a.downloads,
+				a.onSaleDate,
+				a.versionId,
+				(select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
+				from  app_info a 
+			<trim  prefix="where" prefixOverrides="and | or" >
+				<if test="id != null">
+					and a.id = #{id}
+				</if>
+			</trim>
+	</select>
+	
+	<select id="getVersion" resultType="App_vorsion">
+	select v.*,
+			(select a.softwareName from app_info a where a.id=v.appId ) as appName,
+			(select valueName from data_dictionary d where  v.publishStatus=d.valueId AND d.typeCode='PUBLISH_STATUS') as publishStatusName
+			from  app_version  v
+		<trim prefix="where" prefixOverrides="and | or">
+			<if test="appId != null">
+				and v.appId = #{appId}
+			</if>
+		</trim>
+		order by v.creationDate DESC
+	</select>
+	
+	<select id="getModifyID" resultType="App_vorsion">
+	select v.*,
+			(select a.softwareName from app_info a where a.id=v.appId ) as appName,
+			(select valueName from data_dictionary d where  v.publishStatus=d.valueId AND d.typeCode='PUBLISH_STATUS') as publishStatusName
+			from  app_version  v
+			<trim prefix="where" prefixOverrides="and | or">
+				<if test="id != null || id != '' ">
+					and v.id = #{id}
+				</if>
+			</trim>
+	</select>
+	
+	<delete id="getAppinfoDeleteID">
+		delete from app_info where id = #{id}
+	</delete>
+	
+	<delete id="deleteVersionByAppId">
+		delete from app_version where appId = #{appId}
+	</delete>
+	
+	<select id="getAppVersionById" resultType="App_vorsion">
+		select * from app_version where id = #{id}
+	</select>
+	
+	
+	<update id="modify" parameterType="App_vorsion">
+		update app_version
+		<trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+			<if test="versionNo != null">versionNo=#{versionNo},</if>
+			<if test="versionInfo != null">versionInfo=#{versionInfo},</if>
+			<if test="publishStatus != null">publishStatus=#{publishStatus},</if>
+			<if test="downloadLink != null">downloadLink=#{downloadLink},</if>
+			<if test="apkLocPath != null">apkLocPath=#{apkLocPath},</if>
+			<if test="versionSize != null">versionSize=#{versionSize},</if>
+			<if test="apkFileName != null">apkFileName=#{apkFileName},</if>
+			<if test="modifyBy != null">modifyBy=#{modifyBy},</if>
+			<if test="modifyDate != null">modifyDate=#{modifyDate},</if>
+		</trim>
+	</update>
+	
+	<update id="deleteApkFile">
+		update app_version 
+			set apkLocPath=null,
+				downloadLink=null,
+				apkFileName=null
+			where id = #{id}
+	</update>
+	
+	<update id="deleteAppLogo">
+		update app_info 
+			set logoPicPath = null,
+				logoLocPath = null 
+			where id = #{id}
 	</update>
 </mapper>

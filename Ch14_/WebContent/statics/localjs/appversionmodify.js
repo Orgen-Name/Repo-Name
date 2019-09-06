@@ -1,4 +1,5 @@
 function delfile(id){
+	alert(id);
 	$.ajax({
 		type:"GET",//请求类型
 		url:"delfile.json",//请求的url
@@ -27,6 +28,7 @@ $(function(){
 	//上传APK文件---------------------
 	var downloadLink = $("#downloadLink").val();
 	var id = $("#id").val();
+	alert(id);
 	var apkFileName = $("#apkFileName").val();
 	if(downloadLink == null || downloadLink == "" ){
 		$("#uploadfile").show();
