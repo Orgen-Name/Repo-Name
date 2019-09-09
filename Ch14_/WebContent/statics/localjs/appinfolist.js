@@ -172,6 +172,7 @@ var saleSwitchAjax = function(appId,obj){
 					}
 				}
 			}else{
+				alert(data.errorCode)
 				if(data.errorCode === 'exception000001'){
 					alert("对不起，系统出现异常，请联系IT管理员");
 				}else if(data.errorCode === 'param000001'){
