@@ -105,4 +105,22 @@ public interface App_infoService {
 	 * 删除图片路径
 	 */
 	public int deleteAppLogo(Integer id);
+	
+	/**
+	 * 新增app版本信息，并更新app_info表的versionId字段
+	 * @param appVersion
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean appsysadd(App_vorsion appVersion)throws Exception;
+	
+	/**
+	 * update Sale Status By AppId and Operator
+	 * @param appId
+	 * @return
+	 * @throws Exception
+	 */
+	public int appsysUpdateSaleStatusByAppId(App_info appInfo) throws Exception;
+
+	public App_info infoStatus(Integer id);
 }

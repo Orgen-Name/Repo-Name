@@ -104,7 +104,7 @@ public interface App_infoMapper {
 	
 	public App_vorsion getAppVersionById(@Param("id")Integer id);
 	
-	public int modify(App_vorsion appVersion);
+	public int modifyvorsion(App_vorsion appVersion);
 	
 	/**
 	 * 删除资源物理路径
@@ -118,4 +118,20 @@ public interface App_infoMapper {
 	 * @return
 	 */
 	public int deleteAppLogo(@Param(value="id")Integer id);
+	
+	/**
+	 * 添加新版本信息
+	 */
+	public int appsysadd(App_vorsion vorsion);
+	
+	/**
+	 * 上下架操作
+	 * @param appInfo
+	 * @return
+	 * @throws Exception
+	 */
+	public int modify(App_info appInfo)throws Exception;
+	
+	
+	public App_info infoStatus(Integer id);
 }
