@@ -56,5 +56,15 @@
     	<property name="maxUploadSize" value="5000000"/>
     	<property name="defaultEncoding" value="UTF-8"/>		 
     </bean>
-  	 
+    
+  	 <!-- 配置interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/backendInfo/**"/>
+			<mvc:mapping path="/devAppinfo/**"/>
+			<bean class="com.interceptor.SysInterceptor"/>
+		</mvc:interceptor>
+		
+	</mvc:interceptors>
+	
 </beans>

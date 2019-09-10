@@ -39,7 +39,7 @@
 			<div class="col-md-3 left_col menu_fixed">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="${pageContext.request.contextPath }/dev/flatform/main" class="site_title"><i class="fa fa-paw"></i> <span>APP
+						<a href="${pageContext.request.contextPath }/dev/main" class="site_title"><i class="fa fa-paw"></i> <span>APP
 								BMS</span>
 						</a>
 					</div>
@@ -115,8 +115,7 @@
 						<div class="nav toggle">
 							<a id="menu_toggle"><i class="fa fa-bars"></i>
 							</a>
-						</div>00
-0
+						</div>
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"

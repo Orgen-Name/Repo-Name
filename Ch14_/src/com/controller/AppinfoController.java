@@ -558,7 +558,9 @@ return "developer/appversionmodify";
 				}else if(appInfo.getStatus()== 4 && appinfoService.appsysUpdateSaleStatusByAppId(appInfo)>0){
 					//logger.debug("修改为了上架状态");
 					resultMap.put("resultMsg", "success");
-				}		
+				}else if(appInfo.getStatus()== 2 && appinfoService.appsysUpdateSaleStatusByAppId(appInfo)>0){
+					resultMap.put("resultMsg", "success");
+				}
 			} catch (Exception e) {
 				resultMap.put("errorCode", "exception000001");
 			}

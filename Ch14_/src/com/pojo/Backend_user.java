@@ -12,6 +12,13 @@ public class Backend_user {
 	private Integer modifyBy;	//更新者（来源于backend_user用户表的用户id）
 	private Date modifyDate;	//最新更新时间
 	private String userPassword;//用户密码
+	private String valueName;
+	public String getValueName() {
+		return valueName;
+	}
+	public void setValueName(String valueName) {
+		this.valueName = valueName;
+	}
 	public Integer getId() {
 		return id;
 	}

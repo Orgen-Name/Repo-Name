@@ -66,4 +66,9 @@ public class DevController {
 		session.removeAttribute("devUserSession");
 		return "devlogin";
 	}
+	
+	@RequestMapping(value="/index")
+	public String Index(){
+		return "index";
+	}
 }

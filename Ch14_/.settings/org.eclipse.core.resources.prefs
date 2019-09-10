@@ -1,3 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/com/controller/BackendInfoController.java=UTF-8
+encoding//src/com/controller/BackendLoginController.java=UTF-8
+encoding//src/com/dao/backInfo/backInfoMapper.java=UTF-8
+encoding//src/com/dao/backendLogin/LoginMapper.java=UTF-8
+encoding//src/com/service/backendLogin/BackendLoginService.java=UTF-8
+encoding//src/com/service/backendinfo/BackendInfoService.java=UTF-8
 encoding//src/com/tools/Constants.java=UTF-8
 encoding//src/com/tools/PageSupport.java=UTF-8
