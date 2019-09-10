@@ -246,7 +246,7 @@ public class AppinfoController {
 		String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀
 		int filesize = 500000;
 		if(attach.getSize() > filesize){//上传大小不得超过 50k
-		 return "redirect:/dev/flatform/app/appinfomodify?id="+appInfo.getId()
+		 return "redirect:/dev/appinfomodify?id="+appInfo.getId()
 				 +"&error=error4";
 		}else if(prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png") 
 		||prefix.equalsIgnoreCase("jepg") || prefix.equalsIgnoreCase("pneg")){//上传图片格式
@@ -260,13 +260,13 @@ public class AppinfoController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "redirect:/dev/flatform/app/appinfomodify?id="+appInfo.getId()
+			return "redirect:/dev/appinfomodify?id="+appInfo.getId()
 					+"&error=error2";
 		} 
 		 logoPicPath = request.getContextPath()+"/statics/uploadfiles/"+fileName;
 		 logoLocPath = path+File.separator+fileName;
 		}else{
-		return "redirect:/dev/flatform/app/appinfomodify?id="+appInfo.getId()
+		return "redirect:/dev/appinfomodify?id="+appInfo.getId()
 				 +"&error=error3";
 		}
 		}
@@ -300,9 +300,9 @@ public class AppinfoController {
 	
 	@RequestMapping(value="/appview",method = RequestMethod.GET)
 	public String AppView(Integer id ,Model model){
-		App_info appinfo = appinfoService.getAppinfoID(id);
+		App_info app_info = appinfoService.getAppinfoID(id);
 		List<App_vorsion> snippetlist = appinfoService.getVersion(id);
-		model.addAttribute("appInfo",appinfo);
+		model.addAttribute("appInfo",app_info);
 		model.addAttribute("appVersionList",snippetlist);
 		return "/developer/appinfoview";
 	}
@@ -345,10 +345,10 @@ public class AppinfoController {
 	public String AppVersionModifySave(App_vorsion appVersion,HttpSession session,HttpServletRequest request,
 			@RequestParam(value="attach",required= false) MultipartFile attach){	
 		
-String downloadLink =  null;
-String apkLocPath = null;
-String apkFileName = null;
-if(!attach.isEmpty()){
+	String downloadLink =  null;
+	String apkLocPath = null;
+	String apkFileName = null;
+	if(!attach.isEmpty()){
 	String path = request.getSession().getServletContext().getRealPath("statics"+File.separator+"uploadfiles");
 	logger.info("uploadFile path: " + path);
 	String oldFileName = attach.getOriginalFilename();//原文件名
@@ -463,7 +463,7 @@ return "developer/appversionmodify";
 				e.printStackTrace();
 				}
 				model.addAttribute("appVersionList", appVersionList);
-				model.addAttribute(appVersion);
+				model.addAttribute("appVersion",appVersion);
 				model.addAttribute("fileUploadError",fileUploadError);
 				return "developer/appversionadd";
 	}
@@ -474,6 +474,7 @@ return "developer/appversionmodify";
 			String downloadLink =  null;
 			String apkLocPath = null;
 			String apkFileName = null;
+			logger.debug("添加的Id 为"+appVersion.getAppId());
 			if(!attach.isEmpty()){
 				String path = request.getSession().getServletContext().getRealPath("statics"+File.separator+"uploadfiles");
 				logger.info("uploadFile path: " + path);
@@ -513,6 +514,8 @@ return "developer/appversionmodify";
 			}
 			appVersion.setCreatedBy(((Dev_user)session.getAttribute(Constants.DEV_USER_SESSION)).getId());
 			appVersion.setCreationDate(new Date());
+			appVersion.setModifyBy(((Dev_user)session.getAttribute(Constants.DEV_USER_SESSION)).getId());
+			appVersion.setModifyDate(new Date());
 			appVersion.setDownloadLink(downloadLink);
 			appVersion.setApkLocPath(apkLocPath);
 			appVersion.setApkFileName(apkFileName);
